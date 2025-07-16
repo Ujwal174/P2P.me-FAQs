@@ -8,7 +8,6 @@ export function PageHeader() {
       <div className="container mx-auto flex items-center justify-between p-4">
         <Link href="/" className="flex items-center gap-4">
           <Logo />
-          <h1 className="text-xl font-semibold text-foreground/80 font-headline hidden sm:block">FAQs</h1>
         </Link>
         <nav className="flex items-center gap-2">
           <Button variant="ghost" asChild>
