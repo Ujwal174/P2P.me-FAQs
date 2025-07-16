@@ -5,6 +5,9 @@ import { Toaster } from '@/components/ui/toaster';
 export const metadata: Metadata = {
   title: 'P2P.ME',
   description: 'Frequently Asked Questions for P2P.ME',
+  icons: {
+    icon: '/logo.png',
+  },
 };
 
 export default function RootLayout({
