@@ -10,6 +10,7 @@ export function Logo({ className }: { className?: string }) {
         width={32}
         height={32}
         className="h-8 w-8"
+        unoptimized
       />
       <span className="font-headline text-3xl font-bold tracking-tight text-white">
         P2P.ME
