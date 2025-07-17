@@ -25,55 +25,47 @@ export interface FaqItem {
 }
 
 export const faqData: FaqItem[] = [
-  // The Basics - What is P2P.me?
-  {
-    id: 'what-is-p2pme',
-    question: 'What is P2P.me?',
-    answer: `P2P.me is a decentralized protocol for peer-to-peer cryptocurrency transactions, similar to Uniswap but designed for Fiat/Crypto swaps. It allows users to buy and sell USDC directly with each other using local currencies like INR, providing a safe, private, and efficient alternative to traditional centralized exchanges.`,
-    category: 'The Basics',
-  },
   {
     id: 'app-links-user',
-    question: 'Where can I access P2P.me?',
-    answer: `**User Apps:**
-- User App: https://app.p2p.lol/
-- P2P.me App: https://app.p2p.me/
-
-**Merchant Page:**
-- Merchant Portal: https://lp.p2p.me/`,
-    category: 'The Basics',
+    question: 'App Links (Users)',
+    answer: `- User App: https://app.p2p.lol/\n- P2P.me App: https://app.p2p.me/`,
+    category: 'Quick Links',
+  },
+  {
+    id: 'app-links-merchant',
+    question: 'App Links (Merchants)',
+    answer: `- Merchant Page: https://lp.p2p.me/`,
+    category: 'Quick Links',
   },
   {
     id: 'bank-freeze-form',
-    question: 'What should I do if my bank account gets frozen?',
-    answer: `If your bank account is frozen, please fill out this form: https://forms.gle/PSrHjpK4kD6ndHr29
-
-Note: Feel free to DM @Jaybhargav811(Lawyer) if you have any extra details or screenshots to share.`,
-    category: 'Security, Privacy & Compliance',
+    question: 'Bank Freeze? (Fill the Google form)',
+    answer: `If your bank account is frozen, please fill out this form: https://forms.gle/PSrHjpK4kD6ndHr29\n\nNote: Feel free to DM @Jaybhargav811(Lawyer) if you have any extra details or screenshots to share.`,
+    category: 'Quick Links',
   },
   {
     id: 'quick-faq-protection',
     question: 'How does P2P.me protect you from account freeze fraud?',
     answer: `Learn more here: https://x.com/P2Pdotme/status/1938274354024091839`,
-    category: 'Security, Privacy & Compliance',
+    category: 'Quick Links',
   },
   {
     id: 'quick-faq-legal',
     question: 'Is P2P.me legal?',
     answer: `Learn more here: https://x.com/P2Pdotme/status/1940294965051236647`,
-    category: 'The Basics',
+    category: 'Quick Links',
   },
   {
     id: 'quick-faq-buying-selling',
-    question: 'How do I buy or sell USDC on P2P.me?',
+    question: 'Buying or Selling USDC on P2P.me',
     answer: `Learn more here: https://x.com/ParaParru/status/1927209708915487049`,
-    category: 'Transactions & Orders',
+    category: 'Quick Links',
   },
   {
     id: 'quick-faq-deposit',
-    question: 'How do I deposit USDC from a CEX or wallet to my P2P.me wallet?',
+    question: 'Want to deposit USDC from a CEX or wallet to your P2P.me wallet?',
     answer: `Learn more here: https://x.com/Infinix_264/status/1936806954346918272`,
-    category: 'Transactions & Orders',
+    category: 'Quick Links',
   },
   {
     id: 'increase-rp-limit',
@@ -90,40 +82,40 @@ Ways to earn RP:
 - (Optional) Complete ZK-KYC (Aadhaar proof): +150 RP
 
 Note: If you see a “Not Eligible” error during verification, it means you didn’t meet the required criteria to earn RP from that task.`,
-    category: 'Getting Started & Account Management',
+    category: 'Getting Started & Account',
   },
   {
     id: 'get-referral-link',
     question: 'How can I get my referral link on P2P.me?',
     answer: `To unlock your referral link, you need to earn 150 RP (Reputation Points). Once you reach this threshold, the referral option will be activated in your account, and you’ll be able to share your unique link with friends.`,
-    category: 'Getting Started & Account Management',
+    category: 'Getting Started & Account',
   },
   {
     id: 'social-verification-failed',
     question: 'Why is my social verification not working on P2P.me?',
     answer: `Social Verification only works if your account meets the required criteria. If your profile matches the system’s standards, then it will be verified — otherwise, it won’t.
 Also, you cannot reach the transaction milestone or perform transactions without earning RP.`,
-    category: 'Getting Started & Account Management',
+    category: 'Getting Started & Account',
   },
   {
     id: 'new-user-order-limit',
     question: 'Can a new user place multiple orders on P2P.me in a day?',
     answer: `By default, new users can place only one order per day. If they wish to place a second order on the same day, they must verify their account through the provided verification process. They can place up to 10 sell orders as usual.`,
-    category: 'Getting Started & Account Management',
+    category: 'Getting Started & Account',
   },
   {
     id: 'community-verification-info',
     question: 'Asking for Verification to @P2Pdotme Community',
     answer: `Hey! On joining the group, you will see a welcome message along with a request to verify yourself. Once you complete the verification, you will be able to send messages in the group.
 If you want to see the welcome message with the verify option again, please fully exit the group and rejoin. This will refresh the message and allow you to complete the verification process properly.`,
-    category: 'Getting Started & Account Management',
+    category: 'Getting Started & Account',
   },
   {
     id: 'what-is-zk-proof-detailed',
     question: 'What is zk-proof?',
     answer: `zk-KYC prevents money laundering just like KYC does identifying users who do transactions and additionally, zk-KYC keeps users private.
 ZK-KYC lets P2P.me verify users without storing their data anywhere, keeping them completely private.`,
-    category: 'Security, Privacy & Compliance',
+    category: 'Security & Privacy',
   },
   {
     id: 'account-freezes-explained',
@@ -136,13 +128,13 @@ ZK-KYC lets P2P.me verify users without storing their data anywhere, keeping the
 - Structuring merchant flows to reduce exposure
 
 Read the article to know more: https://x.com/p2pdotme/status/1938274354024091839`,
-    category: 'Security, Privacy & Compliance',
+    category: 'Security & Privacy',
   },
   {
     id: 'bank-account-frozen-support',
     question: 'What if my bank account got frozen because of P2P on your platform?',
     answer: `If your account gets frozen by p2p.me, then we will help you to unfreeze it. We have a dedicated team to unfreeze accounts. To date, we have completed over 35,000 orders without any bank freezes. We have a reputation system which doesn't allow frauds.`,
-    category: 'Security, Privacy & Compliance',
+    category: 'Security & Privacy',
   },
   {
     id: 'government-data-zk-kyc-explained',
@@ -151,7 +143,7 @@ Read the article to know more: https://x.com/p2pdotme/status/1938274354024091839
 The government can view your Aadhaar ID only if you choose to undergo zk-KYC.
 As for ZK-Social verifications (LinkedIn, Instagram, GitHub, X), no one — including the government — has access to those accounts or their data.
 If you do not opt for zk-KYC, you can remain fully private.`,
-    category: 'Security, Privacy & Compliance',
+    category: 'Security & Privacy',
   },
   {
     id: 'how-p2pme-is-safe',
@@ -161,7 +153,7 @@ If you do not opt for zk-KYC, you can remain fully private.`,
 2. Second-degree protection: Users are advised to use a separate bank account exclusively for P2P offramps. This minimizes risk by keeping your main financial accounts isolated. Opening a new account is easy through services like Jio Payments Bank or Airtel Payments Bank in India.
 3. Third-degree protection: In the rare event that your account is frozen, the legal team at Unfreeze.in will assist you in unfreezing it completely free of charge.
 This layered approach makes P2P.me one of the safest ways to transact.`,
-    category: 'Security, Privacy & Compliance',
+    category: 'Security & Privacy',
   },
   {
     id: 'tax-concerns-zk-kyc',
@@ -169,25 +161,25 @@ This layered approach makes P2P.me one of the safest ways to transact.`,
     answer: `No, using zk-KYC simply proves that you are a verified human — it does not directly raise any tax concerns. However, as a user, you are fully responsible for reporting and paying your own taxes.
 If you follow the legal requirements, such as reporting TDS and crypto gains as per the law, there will be no issues.
 Since P2P.me is a decentralized protocol, it cannot file or pay taxes on your behalf — you are required to handle your tax obligations independently.`,
-    category: 'Security, Privacy & Compliance',
+    category: 'Security & Privacy',
   },
   {
     id: 'zk-kyc-vs-traditional-kyc',
     question: 'What makes zk-KYC better than traditional KYC?',
     answer: `Traditional KYC can be easily manipulated by AI-generated faces or fake documents. ZK-KYC offers a privacy-preserving, tamper-proof, and decentralised-friendly solution that confirms a user’s legitimacy without exposing personal data.`,
-    category: 'Security, Privacy & Compliance',
+    category: 'Security & Privacy',
   },
   {
     id: 'zk-proof-generation-location',
     question: 'Where are the ZK proofs generated in the Reclaim Protocol?',
     answer: `The Reclaim Protocol generates zero-knowledge (ZK) proofs on the client-side, meaning within the user's device. This ensures that users maintain control over their data and cryptographic operations, as the ZK proofs are created locally without relying on third-party servers.`,
-    category: 'Security, Privacy & Compliance',
+    category: 'Security & Privacy',
   },
   {
     id: 'scan-and-pay-legality',
     question: 'Is it legal to use the "Scan & Pay" method if the USDC used is later traced back to a fraudulent or suspicious INR source?',
     answer: `The "Scan & Pay" method is designed to divide incoming USDC into smaller UPI transactions, which are then paid out to regular vendors or shops. In cases where suspicious or fraudulently sourced INR is converted into USDC and then used via Scan & Pay, the money trail typically ends at the merchant level due to this fragmentation. While P2P.me merchant accounts may sometimes face freezes from banks or authorities, P2P.me offers full refund support for affected merchants. For shopkeepers or vendors receiving payments through legitimate merchant current accounts, any impact is minimal and can usually be resolved by submitting a simple affidavit to the bank or cybercrime authorities. P2P.me also provides free support in such cases to ensure smooth resolution.`,
-    category: 'Practical Use Cases with "Scan & Pay"',
+    category: 'Security & Privacy',
   },
   {
     id: 'wrong-chain-recovery',
@@ -256,14 +248,14 @@ Requirements to become a merchant:
 - USDC Stake requirement: You will need to stake a minimum of 500 USDC on the P2P.me protocol to provide liquidity to the network. You can also stake more than 500 USDC to increase your liquidity contribution — the larger your stake, the more orders you will receive.
 
 If you can satisfy the above requirements you can sign up as a merchant on P2P.me at lp.p2p.me`,
-    category: 'For Merchants',
+    category: 'Merchants',
   },
   {
     id: 'merchant-earnings-explained',
     question: 'How much can you earn by becoming a Merchant?',
     answer: `P2P.me pays out 1% of each transaction you fulfill as a reward to your in-app wallet in USDC.
 For example, if you process orders worth 10,000 USDC in a given month, you will receive 1%, which is 100 USDC, as your reward.`,
-    category: 'For Merchants',
+    category: 'Merchants',
   },
   {
     id: 'merchant-risks-explained',
@@ -273,19 +265,19 @@ There is a very low risk of your bank account being frozen if a fraudster sends 
 
 Legal and regulatory risks:
 As a merchant on P2P.me, you are responsible for ensuring compliance with your local laws and tax regulations. Please consult with local experts to understand your compliance requirements.`,
-    category: 'For Merchants',
+    category: 'Merchants',
   },
   {
     id: 'merchant-availability-hours',
     question: 'Merchants Availability?',
     answer: `Merchants are actively available from 6 am to 12 am.`,
-    category: 'For Merchants',
+    category: 'Merchants',
   },
   {
     id: 'is-p2pme-legal-explained',
     question: 'Is P2P.me legal?',
     answer: `P2P.me is a decentralised protocol, similar to Uniswap but designed for Fiat/Crypto swaps. Like any decentralised system, its legality depends on local regulatory interpretation, but the protocol itself is neutral, global, and permissionless.`,
-    category: 'The Basics',
+    category: 'General & Legal',
   },
   {
     id: 'legal-compliance-standards',
@@ -294,13 +286,13 @@ As a merchant on P2P.me, you are responsible for ensuring compliance with your l
 - ZK-KYC for private yet verifiable identity checks
 - Reputation-based transaction limits
 This helps prevent fraud, financial crimes, and money laundering.`,
-    category: 'The Basics',
+    category: 'General & Legal',
   },
   {
     id: 'vpn-needed-explanation',
     question: 'Why do I need a VPN to access P2P.me?',
     answer: `Some jurisdictions mistakenly treat decentralised protocols like centralised businesses, leading to access restrictions. Using a VPN bypasses this, and P2P.me is engaging with regulators to promote understanding, not evasion.`,
-    category: 'The Basics',
+    category: 'General & Legal',
   },
   {
     id: 'p2pme-alternatives',
@@ -310,13 +302,13 @@ This helps prevent fraud, financial crimes, and money laundering.`,
 - WhatsApp groups
 - Unregistered P2P dealers
 These channels often involve no accountability, enable scams, and undermine national security.`,
-    category: 'The Basics',
+    category: 'General & Legal',
   },
   {
     id: 'unregulated-p2p-problem-scope',
     question: 'How big is the problem with unregulated P2P activity?',
     answer: `According to Chainalysis 2024, countries like India, Brazil, and Indonesia rank in the Top 10 for unorganised P2P activity, with billions moving off-chain, away from any regulatory visibility.`,
-    category: 'The Basics',
+    category: 'General & Legal',
   },
   {
     id: 'p2pme-solution',
@@ -326,13 +318,13 @@ These channels often involve no accountability, enable scams, and undermine nati
 - Prevents fraud
 - Leaves an on-chain audit trail
 - Supports global use while cooperating locally`,
-    category: 'The Basics',
+    category: 'General & Legal',
   },
   {
     id: 'p2pme-mission',
     question: 'What’s the mission behind P2P.me?',
     answer: `P2P.me isn't here to break the system — it’s here to improve it. It’s a pragmatic solution to unsafe, untraceable peer-to-peer markets, offering users, governments, and ecosystems a better way to transact.`,
-    category: 'The Basics',
+    category: 'General & Legal',
   },
   {
     id: 'messaging-guidelines-p2pme',
