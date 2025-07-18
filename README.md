@@ -1,6 +1,6 @@
 # 📚 P2P.me FAQs – Quick Answers to All Your Questions!
 
-Welcome to the **official FAQ hub** for [P2P.me](app.p2p.me) — a trusted **decentralized**, **peer-to-peer** protocol for swapping fiat currency and cryptocurrency.. 🚀
+Welcome to the **official FAQ hub** for [P2P.me](p2p.me) — a trusted **decentralized**, **peer-to-peer** protocol for swapping fiat currency and cryptocurrency.. 🚀
 
 ---
 
