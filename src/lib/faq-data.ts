@@ -42,7 +42,7 @@ export const faqData: FaqItem[] = [
   {
     id: 'bank-freeze-form',
     question: 'Bank Freeze? (Fill the Google form)',
-    answer: `If your bank account is frozen, please fill out this form: https://forms.gle/PSrHjpK4kD6ndHr29\n\nNote: Feel free to DM @Jaybhargav811(Lawyer) if you have any extra details or screenshots to share.`,
+    answer: `If your bank account is frozen, please fill out this form: https://forms.gle/PSrHjpK4kD6ndHr29\n\nNote: Feel free to DM @Jaybhargav811 (Lawyer) if you have any extra details or screenshots to share.`,
     category: 'Quick Links',
   },
   {
