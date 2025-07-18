@@ -12,10 +12,8 @@ interface FaqItemProps {
   answer: string;
 }
 
-// Simple regex to find URLs in text
-const urlRegex = /(https?:\/\/[^\s]+)/g;
-// Regex to find Telegram usernames
-const telegramUsernameRegex = /(@[a-zA-Z0-9_]+)/g;
+// Regex to find Telegram usernames that are NOT already inside HTML tags
+const telegramUsernameRegex = /(?<!>)(@[a-zA-Z0-9_]+)(?!<)/g;
 
 const LinkifiedText = ({ text }: { text: string }) => {
   const [copiedUsername, setCopiedUsername] = useState<string | null>(null);
@@ -30,26 +28,13 @@ const LinkifiedText = ({ text }: { text: string }) => {
     }
   };
 
-  // Split by both URLs and Telegram usernames
-  const parts = text.split(/((https?:\/\/[^\s]+)|(@[a-zA-Z0-9_]+))/g);
+  // Only process Telegram usernames, leave URLs as they are
+  const parts = text.split(telegramUsernameRegex);
 
   return (
     <>
       {parts.map((part, i) => {
-        if (part?.match(urlRegex)) {
-          return (
-            <Link
-              key={i}
-              href={part}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary hover:underline"
-            >
-              {part}
-            </Link>
-          );
-        }
-        if (part?.match(telegramUsernameRegex)) {
+        if (part?.match(/^@[a-zA-Z0-9_]+$/)) {
           return (
             <span
               key={i}
@@ -66,7 +51,8 @@ const LinkifiedText = ({ text }: { text: string }) => {
             </span>
           );
         }
-        return part;
+        // For all other content (including existing HTML links), render as-is
+        return <span key={i} dangerouslySetInnerHTML={{ __html: part }} />;
       })}
     </>
   );
@@ -77,7 +63,9 @@ export function FaqItemComponent({ id, question, answer }: FaqItemProps) {
 
   const handleCopyAnswer = async () => {
     try {
-      await navigator.clipboard.writeText(answer);
+      // Copy plain text version without HTML
+      const plainText = answer.replace(/<[^>]*>/g, '');
+      await navigator.clipboard.writeText(plainText);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
