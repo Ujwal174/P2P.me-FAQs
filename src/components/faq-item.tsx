@@ -24,63 +24,58 @@ const LinkifiedText = ({ text }: { text: string }) => {
     }
   };
 
-  // If the text contains HTML (like <a> tags), render it as HTML first
-  if (text.includes('<a') || text.includes('href')) {
-    // Parse HTML and add copy functionality to Telegram usernames
-    const parts = text.split(/(@[a-zA-Z0-9_]+)/g);
-
-    return (
-      <div>
-        {parts.map((part, index) => {
-          // Check if this part is a Telegram username and not inside HTML tags
-          if (part.match(/^@[a-zA-Z0-9_]+$/) && !text.substring(0, text.indexOf(part)).includes('<a')) {
-            return (
-              <span
-                key={index}
-                className="inline-flex items-center gap-1 text-primary font-medium cursor-pointer hover:bg-primary/10 px-1 py-0.5 rounded transition-colors"
-                onClick={() => handleCopyUsername(part)}
-                title="Click to copy username"
-              >
-                {part}
-                {copiedUsername === part ? (
-                  <Check className="h-3 w-3 text-green-500" />
-                ) : (
-                  <Copy className="h-3 w-3 hover:text-primary/70" />
-                )}
-              </span>
-            );
-          }
-          // For HTML content and regular text, render as HTML
-          return <span key={index} dangerouslySetInnerHTML={{ __html: part }} />;
-        })}
-      </div>
-    );
-  }
-
-  // For plain text, process normally
-  const parts = text.split(/(@[a-zA-Z0-9_]+)/g);
-
+  // Split by URLs and Telegram usernames
+  const urlRegex = /(https?:\/\/[^\s<>"]+)/g;
+  const usernameRegex = /(@[a-zA-Z0-9_]+)/g;
+  
+  // First split by URLs, then by usernames
+  const parts = text.split(urlRegex);
+  
   return (
-    <div className="whitespace-pre-wrap">
+    <div className="whitespace-pre-wrap font-outfit">
       {parts.map((part, index) => {
-        if (part.match(/^@[a-zA-Z0-9_]+$/)) {
+        // Check if this part is a URL
+        if (part.match(urlRegex)) {
           return (
-            <span
+            <a
               key={index}
-              className="inline-flex items-center gap-1 text-primary font-medium cursor-pointer hover:bg-primary/10 px-1 py-0.5 rounded transition-colors"
-              onClick={() => handleCopyUsername(part)}
-              title="Click to copy username"
+              href={part}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-600 hover:text-blue-800 underline hover:no-underline transition-colors"
             >
               {part}
-              {copiedUsername === part ? (
-                <Check className="h-3 w-3 text-green-500" />
-              ) : (
-                <Copy className="h-3 w-3 hover:text-primary/70" />
-              )}
-            </span>
+            </a>
           );
         }
-        return part;
+        
+        // Process this part for Telegram usernames
+        const usernameParts = part.split(usernameRegex);
+        
+        return (
+          <span key={index}>
+            {usernameParts.map((usernamePart, usernameIndex) => {
+              if (usernamePart.match(usernameRegex)) {
+                return (
+                  <span
+                    key={usernameIndex}
+                    className="inline-flex items-center gap-1 text-primary font-medium cursor-pointer hover:bg-primary/10 px-1 py-0.5 rounded transition-colors"
+                    onClick={() => handleCopyUsername(usernamePart)}
+                    title="Click to copy username"
+                  >
+                    {usernamePart}
+                    {copiedUsername === usernamePart ? (
+                      <Check className="h-3 w-3 text-green-500" />
+                    ) : (
+                      <Copy className="h-3 w-3 hover:text-primary/70" />
+                    )}
+                  </span>
+                );
+              }
+              return usernamePart;
+            })}
+          </span>
+        );
       })}
     </div>
   );
@@ -103,7 +98,7 @@ export function FaqItemComponent({ id, question, answer }: FaqItemProps) {
 
   return (
     <AccordionItem value={id}>
-      <AccordionTrigger className="text-left font-medium hover:no-underline">
+      <AccordionTrigger className="text-left font-medium hover:no-underline font-outfit">
         {question}
       </AccordionTrigger>
       <AccordionContent className="space-y-4 pt-2">
@@ -115,7 +110,7 @@ export function FaqItemComponent({ id, question, answer }: FaqItemProps) {
             variant="outline"
             size="sm"
             onClick={handleCopyAnswer}
-            className="flex items-center gap-2 text-xs"
+            className="flex items-center gap-2 text-xs font-outfit"
           >
             {copied ? (
               <>

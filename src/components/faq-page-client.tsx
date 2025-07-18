@@ -40,10 +40,10 @@ export default function FaqPageClient({ allFaqs, categories }: FaqPageClientProp
   return (
     <div className="container mx-auto py-8 px-4 sm:px-6 lg:px-8">
       <section className="text-center mb-12">
-        <h1 className="text-4xl md:text-5xl font-bold font-headline mb-4">
+        <h1 className="text-4xl md:text-5xl font-bold font-coves mb-4">
           Frequently Asked Questions
         </h1>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        <p className="text-lg text-muted-foreground max-w-2xl mx-auto font-outfit">
           Find answers to common questions about P2P.me. Can't find what you're looking for? Use the search bar below.
         </p>
       </section>
@@ -54,7 +54,7 @@ export default function FaqPageClient({ allFaqs, categories }: FaqPageClientProp
           <Input
             type="search"
             placeholder="Search questions..."
-            className="pl-10 h-12 text-lg"
+            className="pl-10 h-12 text-lg font-outfit"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             aria-label="Search questions"
@@ -71,9 +71,11 @@ export default function FaqPageClient({ allFaqs, categories }: FaqPageClientProp
             }
             return (
               <div key={category} className="mb-10">
-                <h2 className="text-2xl font-bold font-headline mb-4 border-b pb-2">
-                  {category}
-                </h2>
+                <div className="mb-6">
+                  <h2 className="inline-block text-xl font-outfit-bold text-black bg-[#958FEC] px-4 py-2 rounded-lg shadow-md">
+                    {category}
+                  </h2>
+                </div>
                 <Accordion type="multiple" className="w-full">
                   {faqsInCategory.map((faq) => (
                     <FaqItemComponent key={faq.id} {...faq} />

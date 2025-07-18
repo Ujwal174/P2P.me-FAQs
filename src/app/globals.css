@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Coves:wght@400&display=swap');
+
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -69,4 +72,18 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Custom font classes */
+.font-coves {
+  font-family: 'Coves', sans-serif;
+}
+
+.font-outfit {
+  font-family: 'Outfit', sans-serif;
+}
+
+.font-outfit-bold {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
 }
