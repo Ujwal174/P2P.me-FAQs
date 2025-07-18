@@ -3,7 +3,6 @@
 import { AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Button } from '@/components/ui/button';
 import { Copy, Check } from 'lucide-react';
-import Link from 'next/link';
 import { useState } from 'react';
 
 interface FaqItemProps {
@@ -12,10 +11,8 @@ interface FaqItemProps {
   answer: string;
 }
 
-// Simple regex to find URLs in text
-const urlRegex = /(https?:\/\/[^\s]+)/g;
-// Regex to find Telegram usernames
-const telegramUsernameRegex = /(@[a-zA-Z0-9_]+)/g;
+// Regex to find standalone Telegram usernames (not already in HTML)
+const telegramUsernameRegex = /@[a-zA-Z0-9_]+/g;
 
 const LinkifiedText = ({ text }: { text: string }) => {
   const [copiedUsername, setCopiedUsername] = useState<string | null>(null);
@@ -30,44 +27,47 @@ const LinkifiedText = ({ text }: { text: string }) => {
     }
   };
 
-  // Split by both URLs and Telegram usernames
-  const parts = text.split(/((https?:\/\/[^\s]+)|(@[a-zA-Z0-9_]+))/g);
+  // Split text by lines first to handle each line separately
+  const lines = text.split('\n');
 
   return (
     <>
-      {parts.map((part, i) => {
-        if (part?.match(urlRegex)) {
-          return (
-            <Link
-              key={i}
-              href={part}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary hover:underline"
-            >
-              {part}
-            </Link>
-          );
-        }
-        if (part?.match(telegramUsernameRegex)) {
-          return (
-            <span
-              key={i}
-              className="inline-flex items-center gap-1 text-primary font-medium cursor-pointer hover:bg-primary/10 px-1 py-0.5 rounded transition-colors"
-              onClick={() => handleCopyUsername(part)}
-              title="Click to copy username"
-            >
-              {part}
-              {copiedUsername === part ? (
-                <Check className="h-3 w-3 text-green-500" />
-              ) : (
-                <Copy className="h-3 w-3 hover:text-primary/70" />
-              )}
-            </span>
-          );
-        }
-        return part;
-      })}
+      {lines.map((line, lineIndex) => (
+        <div key={lineIndex}>
+          {line.split(' ').map((word, wordIndex) => {
+            // Check if this word is a Telegram username
+            if (word.match(telegramUsernameRegex) && !line.includes('<a') && !line.includes('href')) {
+              return (
+                <span key={wordIndex}>
+                  <span
+                    className="inline-flex items-center gap-1 text-primary font-medium cursor-pointer hover:bg-primary/10 px-1 py-0.5 rounded transition-colors"
+                    onClick={() => handleCopyUsername(word)}
+                    title="Click to copy username"
+                  >
+                    {word}
+                    {copiedUsername === word ? (
+                      <Check className="h-3 w-3 text-green-500" />
+                    ) : (
+                      <Copy className="h-3 w-3 hover:text-primary/70" />
+                    )}
+                  </span>
+                  {wordIndex < line.split(' ').length - 1 ? ' ' : ''}
+                </span>
+              );
+            }
+            // For regular words and HTML content, render as-is
+            return (
+              <span
+                key={wordIndex}
+                dangerouslySetInnerHTML={{
+                  __html: word + (wordIndex < line.split(' ').length - 1 ? ' ' : ''),
+                }}
+              />
+            );
+          })}
+          {lineIndex < lines.length - 1 && <br />}
+        </div>
+      ))}
     </>
   );
 };
@@ -77,7 +77,9 @@ export function FaqItemComponent({ id, question, answer }: FaqItemProps) {
 
   const handleCopyAnswer = async () => {
     try {
-      await navigator.clipboard.writeText(answer);
+      // Remove HTML tags for clean text copy
+      const plainText = answer.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, ' ');
+      await navigator.clipboard.writeText(plainText);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
